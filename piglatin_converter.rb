@@ -4,6 +4,8 @@
 #    		return ""
 # 	elsif a == nil
 # 		return nil
+# 	elsif a != a[/[a-zA-Z]+/]
+#   		return nil
 # 	else
 #   		a = a.downcase
 #   		ind_val = a.index(/[aeiou]/)
@@ -22,9 +24,10 @@
 class PiglatinConverter
   def self.convert(a)
   	return a if (a == "") or (a == nil)
+  	return nil if (a != a[/[a-zA-Z]+/])
 	a = a.downcase
   	n = a.index(/[aeiou]/)
   		return a+"way" if n == 0
-		else return a[n..-1] + a[0...n] + "ay"
+		return a[n..-1] + a[0...n] + "ay"
   end
 end

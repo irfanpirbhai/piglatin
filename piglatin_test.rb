@@ -34,4 +34,8 @@ class TestAdd < Test::Unit::TestCase
 	def test_word_beginning_with_vowel
 		assert_equal "orangeway", PiglatinConverter.convert("orange")
 	end
+
+	def test_non_alphabetical_characters_entered
+		assert_equal nil, PiglatinConverter.convert("123%")
+	end
 end
